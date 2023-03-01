@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+// import HelloWorld from "./HelloWorld";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// export default function App() {
+//   return (
+//     <HelloWorld/>
+//   );
+// }
+
+
+
+
+// import GenshinImpact from "./ImportAndExport";
+// import { HonkaiImpact } from "./ImportAndExport";
+
+// export default function App (){
+//   return (
+//     <div>
+//     <GenshinImpact/>
+//     <HonkaiImpact/>
+//     </div>
+//   );
+// }
+
+
+
+
+
+// import JsEx from './JsEx.js';
+
+// export default function App() {
+//   return (
+//       <div>
+//         <JsEx/>
+//       </div>
+//   );
+// }
+
+
+
+
+// import CurlyBraces from "./CurlyBraces";
+// import { ObjectEg } from "./CurlyBraces";
+
+// export default function App() {
+//     return (
+//         <div>
+//             <CurlyBraces/>
+//             <ObjectEg/>
+//         </div>
+//     );
+// }
+
+
+import PassingProps from "./PassingProps";
+
+export default function App() {
+    return (
+        <PassingProps/>  
+    );
 }
-
-export default App;
