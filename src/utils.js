@@ -5,4 +5,4 @@ export function getImageUrl(person , size = 's') {
         size +
         '.jpg'
     );
-}
+}``
