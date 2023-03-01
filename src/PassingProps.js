@@ -36,7 +36,7 @@ function EntireProps(props) {
 
 function JSXSpread(props) {
     return (
-        <div>
+        <div className = "JSXSpread" >
             
         </div>
     );  
