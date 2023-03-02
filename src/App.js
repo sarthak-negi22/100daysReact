@@ -51,10 +51,23 @@
 // }
 
 
-import PassingProps from "./PassingProps";
+// import PassingProps from "./PassingProps";
+
+// export default function App() {
+//     return (
+//         <PassingProps/>  
+//     );
+// }
+
+
+
+
+import ConditionalRender from "./ConditionalRender";
 
 export default function App() {
     return (
-        <PassingProps/>  
+        <div>
+            <ConditionalRender/>
+        </div>
     );
 }
