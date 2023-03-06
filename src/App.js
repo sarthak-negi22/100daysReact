@@ -74,12 +74,23 @@
 
 
 
-import RenderList from "./RenderList";
+// import RenderList from "./RenderList";
+
+// export default function App() {
+//     return(
+//         <div>
+//             <RenderList/>
+//         </div>
+//     )
+// }
+
+
+import PureComponent from "./PureComponent";
 
 export default function App() {
-    return(
+    return (
         <div>
-            <RenderList/>
+            <PureComponent/>
         </div>
-    )
+    );
 }
