@@ -6,7 +6,10 @@ function StudentDeails({ name, age, marks }) {
             <h2>Marks:{ marks }</h2>
 
         </div>
+        
     );
+
+    
 }
 
 function RenderIfElse({ name, age, marks }) {
@@ -57,6 +60,7 @@ function JSXVariable({ marks, age, name }){          //more verbose, fllexible
     else {
         compMarks -=10;
     }
+    
 
     return (
         <div>

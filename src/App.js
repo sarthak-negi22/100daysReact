@@ -62,12 +62,24 @@
 
 
 
-import ConditionalRender from "./ConditionalRender";
+// import ConditionalRender from "./ConditionalRender";
+
+// export default function App() {
+//     return (
+//         <div>
+//             <ConditionalRender/>
+//         </div>
+//     );
+// }
+
+
+
+import RenderList from "./RenderList";
 
 export default function App() {
-    return (
+    return(
         <div>
-            <ConditionalRender/>
+            <RenderList/>
         </div>
-    );
+    )
 }
