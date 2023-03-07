@@ -85,12 +85,22 @@
 // }
 
 
-import PureComponent from "./PureComponent";
+// import PureComponent from "./PureComponent";
+
+// export default function App() {
+//     return (
+//         <div>
+//             <PureComponent/>
+//         </div>
+//     );
+// }
+
+
+
+import EventHandler from "./EventHandler";
 
 export default function App() {
     return (
-        <div>
-            <PureComponent/>
-        </div>
+        <EventHandler/>
     );
 }
