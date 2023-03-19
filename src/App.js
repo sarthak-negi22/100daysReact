@@ -118,10 +118,21 @@
 
 
 
-import RenderAndCommit from "./RenderAndCommit";
+// import RenderAndCommit from "./RenderAndCommit";
+
+// export default function App() {
+//     return (
+//         <RenderAndCommit/>
+//     );
+// }
+
+
+
+
+import StateSnapshot from "./StateSnapshot";
 
 export default function App() {
     return (
-        <RenderAndCommit/>
+        <StateSnapshot/>
     );
 }
