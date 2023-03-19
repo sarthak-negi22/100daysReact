@@ -107,10 +107,21 @@
 
 
 
-import State from "./State";
+// import State from "./State";
+
+// export default function App() {
+//     return (
+//         <State/>
+//     );
+// }
+
+
+
+
+import RenderAndCommit from "./RenderAndCommit";
 
 export default function App() {
     return (
-        <State/>
+        <RenderAndCommit/>
     );
 }
