@@ -5,11 +5,18 @@ function MultipleStates() {
     const [index, setIndex] = useState(0);
     const [showMore, setShowMore] = useState(false);
 
+    let next = index < sculptureList.length - 1;
+    let prev = index > 0;
+
     function handleNextClick() {
+
+        if(next)
         setIndex(index + 1);
     }
 
     function handlePrevClick() {
+        
+        if(prev)
         setIndex(index - 1);
     }
 
@@ -21,11 +28,11 @@ function MultipleStates() {
 
     return (
         <>
-            <button onClick = { handleNextClick }>
+            <button onClick = { handleNextClick } disabled = { !next }>
                 Next
             </button>
 
-            <button onClick = { handlePrevClick }>
+            <button onClick = { handlePrevClick } disabled = { !prev }>
                 Previous
             </button>
 
