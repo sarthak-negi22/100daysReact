@@ -1,6 +1,42 @@
 import { useState } from "react";
 import { sculptureList } from "./data";
 
+function Form() {
+    const [ firstName, setFirstName ] = useState('')
+   const [ lastName, setLastName ] = useState('')
+  
+    
+    function handleFirstNameChange(e) {
+      setFirstName(e.target.value)
+    }
+  
+    function handleLastNameChange(e) {
+      setLastName(e.target.value)
+    }
+  
+    function handleReset() {
+      setFirstName('');
+      setLastName('');
+    }
+  
+    return (
+      <form onSubmit={e => e.preventDefault()}>
+        <input
+          placeholder="First name"
+          value={firstName}
+          onChange={handleFirstNameChange}
+        />
+        <input
+          placeholder="Last name"
+          value={lastName}
+          onChange={handleLastNameChange}
+        />
+        <h1>Hi, {firstName} {lastName}</h1>
+        <button onClick={handleReset}>Reset</button>
+      </form>
+    );
+  }
+
 function MultipleStates() {
     const [index, setIndex] = useState(0);
     const [showMore, setShowMore] = useState(false);
@@ -100,12 +136,14 @@ export default function State() {
 
             {/* <ShowSculptures/> */}
 
-            <MultipleStates/>
+            {/* <MultipleStates/>
 
             <br/>
 
             <MultipleStates/>       
-            {/* state is isolated and local to each component */}
+            state is isolated and local to each component */}
+
+            <Form/>
         </>
     )
 }
