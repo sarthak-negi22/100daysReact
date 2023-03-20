@@ -129,10 +129,23 @@
 
 
 
-import StateSnapshot from "./StateSnapshot";
+// import StateSnapshot from "./StateSnapshot";
+
+// export default function App() {
+//     return (
+//         <StateSnapshot/>
+//     );
+// }
+
+
+
+
+import StateUpdates from "./StateUpdates";
 
 export default function App() {
     return (
-        <StateSnapshot/>
-    );
+        <>
+            <StateUpdates/>
+        </>
+    )
 }
