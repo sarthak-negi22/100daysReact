@@ -140,12 +140,24 @@
 
 
 
-import StateUpdates from "./StateUpdates";
+// import StateUpdates from "./StateUpdates";
+
+// export default function App() {
+//     return (
+//         <>
+//             <StateUpdates/>
+//         </>
+//     )
+// }
+
+
+
+
+
+import UpdateObjInState from "./UpdateObjInState";
 
 export default function App() {
     return (
-        <>
-            <StateUpdates/>
-        </>
-    )
+        <UpdateObjInState/>
+    );
 }
