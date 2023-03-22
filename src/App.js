@@ -154,10 +154,25 @@
 
 
 
-import UpdateObjInState from "./UpdateObjInState";
+// import UpdateObjInState from "./UpdateObjInState";
+
+// export default function App() {
+//     return (
+//         <UpdateObjInState/>
+//     );
+// }
+
+
+
+
+
+
+import UpdateArrayInState from "./UpdateArrayInState";
 
 export default function App() {
     return (
-        <UpdateObjInState/>
-    );
+        <>
+            <UpdateArrayInState/>
+        </>
+    )
 }
