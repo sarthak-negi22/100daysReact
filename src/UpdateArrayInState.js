@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 
+// replacing an item in an array
+
+
 let initialShapes = [
     { id : 0, type : 'circle', x : 50, y : 100 },
     { id : 1, type : 'square', x : 150, y : 100 },
@@ -15,6 +18,7 @@ function TransformArray() {
      function handleClick() {
         const changeShapes = shapes.map(shape => {
             if (shape.type === 'square') {
+                // console.log(shape);
             return shape;
             }
             else {
