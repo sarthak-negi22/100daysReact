@@ -15,7 +15,7 @@ function TransformArray() {
     
      const [shapes, setShapes] = useState(initialShapes);
 
-     function handleClick() {
+     function handleDownClick() {
         const changeShapes = shapes.map(shape => {
             if (shape.type === 'square') {
                 // console.log(shape);
@@ -30,11 +30,47 @@ function TransformArray() {
         })
         setShapes(changeShapes);
      }
+
+     function handleUpClick() {
+        const changeShapes = shapes.map(shape => {
+            if(shape.type == 'square') {
+                return shape;
+            }
+            else {
+                return {
+                    ...shape,
+                    y : shape.y - 50,
+                }
+            }
+        })
+        setShapes(changeShapes);
+     }
+
+     function handleSquare() {
+        const changeShapes = shapes.map(shape=> {
+            if(shape.type == 'circle') {
+                return shape;
+            }
+            else {
+                return {
+                    ...shape,
+                    x : shape.x + 50,
+                }
+            }
+        })
+        setShapes(changeShapes);
+     }
     
     return (
         <>
-           <button onClick={handleClick}>
+           <button onClick={ handleDownClick }>
         Move circles down!
+      </button>
+      <button onClick={ handleUpClick }>
+        Move Circles Up!
+      </button>
+      <button onClick={ handleSquare }>
+        Move Square
       </button>
       {shapes.map(shape => (
         <div
