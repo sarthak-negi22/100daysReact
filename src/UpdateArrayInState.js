@@ -1,7 +1,96 @@
 import { useState } from "react";
 
+// updating objects inside array
 
+let JenshinPlayers = [
+    { id : 0, name : "yelan", have:false },
+    { id : 1, name : "tignhari", have:false },
+    { id : 2, name : "xiao", have:false }
+];
 
+function UpdateObjectInArray() {
+
+    const [lucas, setLucas] = useState(JenshinPlayers);
+    const [taabish, setTaabish] = useState(JenshinPlayers);
+    const [konichivo, setKonichivo] = useState(JenshinPlayers);
+
+    function handleLucas(jenshinId, nextHave) {
+        setLucas(lucas.map(player => {
+            if(player.id === jenshinId) {
+                return {
+                    ...player, have : nextHave
+                };
+            } else {
+                return player;
+            }
+        }))
+    }
+    function handleTaabish(jenshinId, nextHave) {
+        setTaabish(taabish.map(player => {
+            if(player.id === jenshinId) {
+                return {
+                    ...player, have : nextHave
+                };
+            } else {
+                return player;
+            }
+        }))
+    }
+    function handleKonichivo(jenshinId, nextHave) {
+        setKonichivo(konichivo.map(player => {
+            if(player.id === jenshinId) {
+                return {
+                    ...player, have : nextHave
+                };
+            } else {
+                return player;
+            }
+        }))
+    }
+
+    return (
+        <>
+          <h1>Jenshin Impact</h1>
+          <h2>Things that LucaS Own:</h2>
+          <ItemList
+            artworks={lucas}
+            onToggle={handleLucas} />
+          <h2>Things that Taabish Own:</h2>
+          <ItemList
+            artworks={taabish}
+            onToggle={handleTaabish} />
+          <h2>Things that Konichivo Own:</h2>
+          <ItemList
+            artworks={konichivo}
+            onToggle={handleKonichivo} />
+        </>
+      );
+    }
+    
+    function ItemList({ artworks, onToggle }) {
+      return (
+        <ul>
+          {artworks.map(artwork => (
+            <li key={artwork.id}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={artwork.seen}
+                  onChange={e => {
+                    onToggle(
+                      artwork.id,
+                      e.target.checked
+                    );
+                  }}
+                />
+                {artwork.name}
+              </label>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+ 
 
 // making other changes to an array (reverse, sort)
 let nextIndex = 3;
@@ -306,7 +395,9 @@ export default function UpdateObjInState() {
 
             {/* <GenshinPlayers/> */}
 
-            <ReversePlayers/>
+            {/* <ReversePlayers/> */}
+
+            <UpdateObjectInArray/>
         </>
     );
 }
