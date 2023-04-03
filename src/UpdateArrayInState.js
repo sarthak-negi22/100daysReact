@@ -1,7 +1,48 @@
 import { useState } from "react";
 
 
+// inserting into an array at a particular index
+function InsertPlayer() {
+    
+}
+
 // replacing an item in an array
+let initialAR = [
+    0, 0, 0
+];
+
+function CounterAR(index) {
+    const [adventureExp, setAdventureExp] = useState(initialAR);
+
+    function handleClick(index) {
+        const nextAR = adventureExp.map((a,i) => {
+            if(i === index) {
+                return a + 1;
+            }
+            else {
+                return a;
+            }
+        });
+        setAdventureExp(nextAR);
+    }
+
+    return (
+        <>
+        <ul>
+            { adventureExp.map((adv,i) => (
+                <li key = {i}>
+                    { adv }
+                    <button onClick = {() => {
+                        handleClick(i);
+                    }}>
+                        +1
+                    </button>
+                </li>
+            ))}
+            </ul>
+        </>
+    )
+}
 
 
 let initialShapes = [
@@ -180,7 +221,9 @@ export default function UpdateObjInState() {
 
             {/* <RemoveFromArray/> */}
 
-            <TransformArray/>
+            {/* <TransformArray/> */}
+
+            <CounterAR/>
         </>
     );
 }
