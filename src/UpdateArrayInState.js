@@ -2,8 +2,53 @@ import { useState } from "react";
 
 
 // inserting into an array at a particular index
-function InsertPlayer() {
+
+let nextIndex = 3;
+const initialPlayers = [
+    { id : 0, name : "LucaS", advRank : 60 },
+    { id : 1, name : "Taabish", advRank : 59 },
+    { id : 2, name : "Konichivo", advRank : 53 },
+];
+
+function GenshinPlayers() {
+
+    const [name, setName] = useState(' ');
+    const [players, setPlayers] = useState(
+        initialPlayers
+    );
+
+    function handleClick() {
+        const insertAt = 1;
+        const nextPlayers = [
+            ...players.slice(0,insertAt),
+
+            { id : nextId++, name : name },
+
+            ...players.slice(insertAt)
+        ];
+        setPlayers(nextPlayers);
+        setName(' ');
+    }
     
+    return (
+        <>
+            <h1>Genshin Impact Players Details</h1>
+            <input 
+                value = { name }
+                onChange = {e => setName(e.target.value)}
+            />
+
+            <button onClick = { handleClick }>
+                Add
+            </button>
+
+            <ul>
+                { players.map(player => (
+                    <li key = { player.id }>{ player.name } { player.advRank } </li>
+                )) }
+            </ul>
+        </>
+    );
 }
 
 // replacing an item in an array
@@ -223,7 +268,9 @@ export default function UpdateObjInState() {
 
             {/* <TransformArray/> */}
 
-            <CounterAR/>
+            {/* <CounterAR/> */}
+
+            <GenshinPlayers/>
         </>
     );
 }
