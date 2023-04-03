@@ -1,14 +1,48 @@
 import { useState } from "react";
 
 
-// inserting into an array at a particular index
 
+
+// making other changes to an array (reverse, sort)
 let nextIndex = 3;
 const initialPlayers = [
     { id : 0, name : "LucaS", advRank : 60 },
     { id : 1, name : "Taabish", advRank : 59 },
     { id : 2, name : "Konichivo", advRank : 53 },
 ];
+
+function ReversePlayers() {
+    
+    const [players, setPlayers] = useState(initialPlayers);
+
+    function handleClick() {
+        const newPlayers = [...players];
+        newPlayers.reverse();
+        setPlayers(newPlayers);
+    }
+
+    return (
+        <>
+            <button onClick = { handleClick }>
+                UNO Reverse
+            </button>
+            <ul>
+                { players.map(player => (
+                    <li key = { player.id }> { player.id } { player.name } { player.advRank }</li>
+                ))}
+            </ul>
+        </>
+    );  
+}
+
+
+// inserting into an array at a particular index
+// let nextIndex = 3;
+// const initialPlayers = [
+//     { id : 0, name : "LucaS", advRank : 60 },
+//     { id : 1, name : "Taabish", advRank : 59 },
+//     { id : 2, name : "Konichivo", advRank : 53 },
+// ];
 
 function GenshinPlayers() {
 
@@ -270,7 +304,9 @@ export default function UpdateObjInState() {
 
             {/* <CounterAR/> */}
 
-            <GenshinPlayers/>
+            {/* <GenshinPlayers/> */}
+
+            <ReversePlayers/>
         </>
     );
 }
