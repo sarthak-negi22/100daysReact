@@ -1,12 +1,68 @@
 import { useState } from "react";
+import { useImmer } from "use-immer";
 
-// updating objects inside array
+// concise logic update with useImmer
 
 let JenshinPlayers = [
     { id : 0, name : "yelan", have:false },
     { id : 1, name : "tignhari", have:false },
     { id : 2, name : "xiao", have:false }
 ];
+
+function ConcideLogic() {
+    const [lucas, updateLucas] = useImmer(JenshinPlayers);
+    const [taabish, updateTaabish] = useImmer(JenshinPlayers);
+    const [konichivo, updateKonichivo] = useImmer(JenshinPlayers);
+
+    function handleLucas(jenshinId, nextHave) {
+        updateLucas(draft => {
+            const players = draft.find(a => a.id === jenshinId);
+            players.have = nextHave;
+        })
+    }
+
+    function handleTaabish(jenshinId, nextHave) {
+        updateTaabish(draft => {
+            const players = draft.find(a => a.id === jenshinId);
+            players.have = nextHave;
+        })
+    }
+
+    function handleKonichivo(jenshinId, nextHave) {
+        updateTaabish(draft => {
+            const players = draft.find(a => a.id === jenshinId);
+            players.have = nextHave;
+        })
+    }
+
+    return (
+        <>
+            <h1>Jenshin Players</h1>
+            <h2>Things that LucaS Own:</h2>
+            <ItemList
+                artworks = { lucas }
+                onToggle = { handleLucas }
+            />
+            <h2>Things that Konichivo Own:</h2>
+            <ItemList
+                artworks = { konichivo }
+                onToggle = { handleKonichivo }
+            />
+            <h2>Things that Taabish Own:</h2>
+            <ItemList
+                artworks = { taabish }
+                onToggle = { handleTaabish }
+            />
+        </>
+    );
+}
+
+// updating objects inside array
+// let JenshinPlayers = [
+//     { id : 0, name : "yelan", have:false },
+//     { id : 1, name : "tignhari", have:false },
+//     { id : 2, name : "xiao", have:false }
+// ];
 
 function UpdateObjectInArray() {
 
@@ -397,7 +453,9 @@ export default function UpdateObjInState() {
 
             {/* <ReversePlayers/> */}
 
-            <UpdateObjectInArray/>
+            {/* <UpdateObjectInArray/> */}
+
+            <ConcideLogic/>
         </>
     );
 }
