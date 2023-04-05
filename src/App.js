@@ -167,12 +167,22 @@
 
 
 
-import UpdateArrayInState from "./UpdateArrayInState";
+// import UpdateArrayInState from "./UpdateArrayInState";
+
+// export default function App() {
+//     return (
+//         <>
+//             <UpdateArrayInState/>
+//         </>
+//     )
+// }
+
+
+
+import ThinkingInReact from "./ThinkingInReact";
 
 export default function App() {
     return (
-        <>
-            <UpdateArrayInState/>
-        </>
-    )
+        <ThinkingInReact/>
+    );
 }
