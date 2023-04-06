@@ -26,6 +26,7 @@ function ProductRow({ product }) {
     return (
         <>
             <tr>
+                <input type="checkbox"/>
                 <td>
                     { name }
                 </td>
@@ -65,12 +66,8 @@ function ProductTable({ products }){
             <table>
                 <thead>
                     <tr>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Price
-                        </th>
+                        <th>Name</th>
+                        <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,12 +83,12 @@ function SearchBar() {
         <>
            <form >
             <input type="text" placeholder = "Search" />
+           </form>
             <label >
                 <input type="checkbox"/>
                 {' '}
                 Only show products in stock
             </label>
-           </form>
         </>
     );
 }
