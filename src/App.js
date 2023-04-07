@@ -179,10 +179,19 @@
 
 
 
-import ThinkingInReact from "./ThinkingInReact";
+// import ThinkingInReact from "./ThinkingInReact";
+
+// export default function App() {
+//     return (
+//         <ThinkingInReact/>
+//     );
+// }
+
+
+import TicTacToe from "./TicTacToe";
 
 export default function App() {
     return (
-        <ThinkingInReact/>
+        <TicTacToe/>
     );
 }
