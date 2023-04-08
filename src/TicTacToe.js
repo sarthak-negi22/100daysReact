@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Square() {
+function Board() {
     return (
         <>
              {/* <button className="square">X</button> */}
