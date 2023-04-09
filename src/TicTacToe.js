@@ -26,7 +26,7 @@ function Board() {
 export default function TicTacToe() {
     return (
         <>
-            <Square/>
+            <Board/>
         </>
     );
 }
