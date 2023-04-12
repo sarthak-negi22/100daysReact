@@ -12,21 +12,3 @@ code {
     monospace;
 } */
 
-.square {
-  /* color: blue;
-  height: 25px;
-  flex: auto; */
-  border: 1px solid black;
-  /* text-align: center; */
-  width: 20px;
-  height: 20px;
-
-}
-
-.board-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  
-}
