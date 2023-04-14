@@ -80,7 +80,7 @@ function Board() {
 export default function TicTacToe() {
     return (
         <>
-            <Board/>
+            {/* <Board/> */}
         </>
     );
 }
