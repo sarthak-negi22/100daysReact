@@ -188,10 +188,22 @@
 // }
 
 
-import TicTacToe from "./TicTacToe";
+
+// not completed yet
+// import TicTacToe from "./TicTacToe";
+
+// export default function App() {
+//     return (
+//         <TicTacToe/>
+//     );
+// }
+
+
+
+import ReactToInputWithState from "./ReactingToInputWithState";
 
 export default function App() {
     return (
-        <TicTacToe/>
+        <ReactToInputWithState/>
     );
 }
