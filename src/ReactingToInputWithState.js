@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 
-function ImperativeForm() {
+function DeclarativeForm() {
     
     const [answer, setAnswer] = useState('');
     const [error, setError] = useState(null);
     const [status, setStatus] = useState('typing');
 
     if(status === 'success') {
-        return <h1>That's Corrent!</h1>
+        return <h1>That's Correct!</h1>
     }
 
     function submitForm(answer) {
@@ -130,7 +130,7 @@ export default function ReactToInputWithState() {
 
             {/* <DisplayManyVisualStates/> */}
 
-            <ImperativeForm/>
+            <DeclarativeForm    />
         </>
     );
 }

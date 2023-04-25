@@ -200,10 +200,20 @@
 
 
 
-import ReactToInputWithState from "./ReactingToInputWithState";
+// import ReactToInputWithState from "./ReactingToInputWithState";
+
+// export default function App() {
+//     return (
+//         <ReactToInputWithState/>
+//     );
+// }
+
+
+
+import StructuringState from "./StructuringState";
 
 export default function App() {
     return (
-        <ReactToInputWithState/>
+        <StructuringState/>
     );
 }
