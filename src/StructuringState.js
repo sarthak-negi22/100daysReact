@@ -1,5 +1,51 @@
 import { useState } from "react";
 
+function AvoidDuplicationInState() {
+    return (
+        <>
+            
+        </>
+    );
+}
+
+function AvoidRedundantState() {
+    
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+
+    const fullName = firstName + ' ' + lastName;
+
+    function handleFirstName(e) {
+        setFirstName(e.target.value);
+    }
+
+    function handleLastName(e) {
+        setLastName(e.target.value);
+    }
+    
+    return (
+        <>
+            <h2>Genshin Impact Character Names</h2>
+            <label >
+                First Name: { ' ' }
+                <input
+                    value = { firstName }
+                    onChange = { handleFirstName }
+                />
+            </label>
+            <br/>
+            <label >
+                Last Name: { ' ' }
+                <input
+                    value = { lastName }
+                    onChange = { handleLastName }
+                />
+            </label>
+            <p>You entered: <b>{ fullName } </b></p>
+        </>
+    );
+}
+
 function AvoidContradictionInState() {
     
     const [status, setStatus] = useState('typing');
@@ -36,8 +82,8 @@ function AvoidContradictionInState() {
                 <p>What are your thoughts on Sumeru?</p>
                 <textarea
                     disabled = { isSending }
-                    value = {text}
-                    onChange = {e => handleTextChange(e) }
+                    value = { text }
+                    onChange = { e => handleTextChange(e) }
                 />
                 <br/>
                 <button
@@ -98,7 +144,9 @@ export default function StructuringState() {
 
             {/* <GroupRelatedState/> */}
 
-            <AvoidContradictionInState/>
+            {/* <AvoidContradictionInState/> */}
+
+            <AvoidRedundantState/>
         </>
     );
 }
