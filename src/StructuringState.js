@@ -1,4 +1,18 @@
 import { useState } from "react";
+import { initialTravelPlan } from "./places";
+
+function AvoidDeeplyNestedState() {
+    
+    const [plan, setPlan] = useState(initialTravelPlan);
+
+    
+    
+    return (
+        <>
+            
+        </>
+    )
+}
 
 const initialCharacters = [
     { name : 'yoimiya', element : 'pyro', id : 0 },
