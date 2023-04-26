@@ -1,9 +1,57 @@
 import { useState } from "react";
 
+const initialCharacters = [
+    { name : 'yoimiya', element : 'pyro', id : 0 },
+    { name : 'nilou', element : 'hydro', id : 1 },
+    { name : 'yae miko', element : 'electro', id : 2 },
+]
+
 function AvoidDuplicationInState() {
+
+    const [characters, setCharacters] = useState(initialCharacters);
+    const [selectedId, setSelectedId] = useState(0);
+
+    const selectedCharacter = characters.find(character => 
+            character.id === selectedId
+        );
+
+    // console.log(selectedCharacter);
+
+    function handleCharacterChange(id,e) {
+        setCharacters(characters.map(character => {
+            if(character.id === id) {
+                return {
+                    ...character,
+                    name : e.target.value,
+                };
+            } else {
+                return character;
+            }
+        }));
+    }
+
     return (
         <>
-            
+            <h2>Who's your favorite character?</h2>  
+            <ul>
+                { characters.map((character, index) => (
+                    <li key = { character.id }>
+                        <input
+                            value = { character.name }
+                            onChange = { e => {handleCharacterChange(character.id,e)}}
+                        />
+                        { ' ' }
+                        <button
+                            onClick = { () => {
+                                setSelectedId(character.id);
+                            }}
+                        >
+                            Choose
+                        </button>
+                    </li>
+                )) }
+            </ul>
+            <p>Your favorite character is: { selectedCharacter.name } ({ selectedCharacter.element })</p>
         </>
     );
 }
@@ -146,7 +194,9 @@ export default function StructuringState() {
 
             {/* <AvoidContradictionInState/> */}
 
-            <AvoidRedundantState/>
+            {/* <AvoidRedundantState/> */}
+
+            <AvoidDuplicationInState/>
         </>
     );
 }
