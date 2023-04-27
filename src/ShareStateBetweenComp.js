@@ -2,6 +2,49 @@ import { useState } from "react";
 
 function AddStateToCommonParent() {
     const [activeIndex, setActiveIndex] = useState(0);
+
+    function Panel({
+        title, 
+        children,
+        isActive,
+        onShow
+    }) {
+        return (
+            <>
+                <section className = "panel">
+                    <h3>{ title }</h3>
+                    { isActive ? (
+                        <p>{ children }</p>
+                    ) : (
+                        <button onClick = { onShow }>
+                            Show More
+                        </button> 
+                    )}
+                </section>
+            </>
+        );
+    }
+
+    return (
+        <>
+            <h2>Almighty Raiden Shogun</h2>
+            <Panel 
+                title = "About"
+                isActive = { activeIndex === 0 }
+                onShow = { () => setActiveIndex(0)}
+            >
+                She is the archon of the inazuma
+            </Panel>
+            <Panel 
+                title = "History"
+                isActive = { activeIndex === 1 }
+                onShow = { () => setActiveIndex(1)}
+            >
+                She won the archon war
+            </Panel>
+        </>
+    );
+
 }
 
 function PassHardCodedDataFromParent() {
@@ -127,7 +170,9 @@ export default function ShareStateBetweenComp() {
 
             {/* <RemoveStateFromChildComp/> */}
 
-            <PassHardCodedDataFromParent/>
+            {/* <PassHardCodedDataFromParent/> */}
+
+            <AddStateToCommonParent/>
         </>
     );  
 }
