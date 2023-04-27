@@ -5,7 +5,21 @@ function AvoidDeeplyNestedState() {
     
     const [plan, setPlan] = useState(initialTravelPlan);
 
-    
+    // console.log(plan);
+
+    function handleComplete(parentId, childId) {
+        const parent = plan[parentId];
+        const nextParent = {
+            ...parent,
+            childIds : parent.childIds.filter(id => id !== childId)
+        };
+        setPlan({
+            ...plan, 
+            [parentId] : nextParent
+        });
+    }
+
+    const root = plan[0];
     
     return (
         <>
@@ -210,7 +224,9 @@ export default function StructuringState() {
 
             {/* <AvoidRedundantState/> */}
 
-            <AvoidDuplicationInState/>
+            {/* <AvoidDuplicationInState/> */}
+
+            <AvoidDeeplyNestedState/>
         </>
     );
 }
