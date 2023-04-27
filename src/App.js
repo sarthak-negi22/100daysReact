@@ -210,10 +210,19 @@
 
 
 
-import StructuringState from "./StructuringState";
+// import StructuringState from "./StructuringState";
+
+// export default function App() {
+//     return (
+//         <StructuringState/>
+//     );
+// }
+
+
+import ShareStateBetweenComp from "./ShareStateBetweenComp";
 
 export default function App() {
     return (
-        <StructuringState/>
+        <ShareStateBetweenComp/>
     );
 }
