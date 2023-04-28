@@ -219,10 +219,19 @@
 // }
 
 
-import ShareStateBetweenComp from "./ShareStateBetweenComp";
+// import ShareStateBetweenComp from "./ShareStateBetweenComp";
+
+// export default function App() {
+//     return (
+//         <ShareStateBetweenComp/>
+//     );
+// }
+
+
+import PreserveAndResetState from "./PreserveAndResetState";
 
 export default function App() {
     return (
-        <ShareStateBetweenComp/>
+        <PreserveAndResetState/>
     );
 }
