@@ -1,5 +1,58 @@
 import { useState } from "react";
 
+function NewCounter({ person }) {
+        
+    const [score, setScore] = useState(0);
+    const [hover, setHover] = useState(false);
+
+    let className = "counter";
+    if(hover) {
+        className += "hover";
+    }
+
+    function handleClick() {
+        setScore(score + 1);
+    }
+
+    return(
+        <>
+            <div
+                className = { className }
+                onPointerEnter = { () => setHover(true)}
+                onPointerLeave = { () => setHover(false)}
+            >
+                <h1>{ person }'s Score: { score }</h1>
+                <button onClick = { handleClick }>
+                    Add one
+                </button>
+            </div>
+        </>
+    );  
+}
+
+// resetting state at the same position
+function ResetStateWithKey() {
+    
+    const [isPlayerA, setIsPlayerA] = useState(true);
+
+    function handleClick() {
+        setIsPlayerA(!isPlayerA);
+    }
+    
+    return (
+        <>
+            { isPlayerA ? (
+                <NewCounter key = "LucaS" person = "LucaS"/>
+            ) : (
+                <NewCounter  key = "Astra" person = "Astra"/>
+            )}
+            <button onClick = { handleClick }>
+                Next player!
+            </button>
+        </>
+    );
+}
+
 // when you render a different component at the same position, the state of entire sub tree gets reset
 function NewFancyStyle() {
     
@@ -163,7 +216,9 @@ export default function PreserveAndResetState() {
 
             {/* <FancyStyleComponent/> */}
 
-            <TakeABreak/>
+            {/* <TakeABreak/> */}
+
+            <ResetStateWithKey/>
         </>
     );
 }
