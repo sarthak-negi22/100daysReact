@@ -1,5 +1,16 @@
 import { useState } from "react";
 
+function ResetFormWithKey() {
+
+    
+
+    return (
+        <>
+
+        </>
+    );
+}
+
 function NewCounter({ person }) {
         
     const [score, setScore] = useState(0);
