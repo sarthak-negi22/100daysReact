@@ -1,5 +1,14 @@
 import { useState } from "react";
 
+// to migrate from useState to useReducer, first step is to move from setting state to dispatch state
+function DispatchActions() {
+    return (
+        <>
+        
+        </>
+    );
+}
+
 const initialTasks = [
     {id: 0, text: 'Visit Kafka Museum', done: true},
     {id: 1, text: 'Watch a puppet show', done: false},
