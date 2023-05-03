@@ -5,7 +5,9 @@ const initialTasks = [
     {id: 1, text: 'Watch a puppet show', done: false},
     {id: 2, text: 'Lennon Wall pic', done: false},
   ];
-  let nextId = 3;
+
+let nextId = 3;
+
 function TaskApp() {
     const [tasks, setTasks] = useState(initialTasks);
 
@@ -54,7 +56,7 @@ function Task({ task, onChange, onDelete }) {
     const [isEditing, setIsEditing] = useState(false);
     let taskContent;
 
-    if(isEditing){
+    if(isEditing) {
         taskContent = (
             <>
                 <input
@@ -138,7 +140,7 @@ function AddTask({ onAddText }) {
             <input
                 placeholder = "Add text"
                 value = { text }
-                onChange = { (e) => handleChange }
+                onChange = { (e) => setText(e.target.value) }
             />{' '}
             <button 
                 onClick = {() => {
