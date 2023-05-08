@@ -1,37 +1,11 @@
 import { useState } from "react";
 import { useReducer } from "react";
 
-// second step is to write a reducer function
-function taskReducer(tasks,action) {
-    if (action.type === 'added') {
-        return [
-            ...tasks,
-            {
-                id : action.id,
-                text : action.text,
-                done : false,
-            },
-        ];
-    } else if (action.type === 'changed') {
-        return tasks.map((t) => {
-            if(t.id === action.task.id) {
-                return action.task;
-            } else {
-                return t;
-            }
-        });
-    } else if (action.type === 'deleted') {
-        return tasks.filter((t) => t.id != action.id);
-    } else {
-        throw Error('Unknown action:'+action.type);
-    }
-}
+// use the reducer from your component
+function ReducerComponent() {
+    const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
 
-
-// to migrate from useState to useReducer, first step is to move from setting state to dispatch state
-function DispatchActions() {
-    
-    function handleAddtask(text) {
+    function handleAddTask(text) {
         dispatch({              //action object
             type : 'added',
             id : nextId++,
@@ -52,13 +26,104 @@ function DispatchActions() {
             taskId : taskId,
         });
     }
-    
+
+    function taskReducer(tasks,action) {
+        if (action.type === 'added') {
+            return [
+                ...tasks,
+                {
+                    id : action.id,
+                    text : action.text,
+                    done : false,
+                },
+            ];
+        } else if (action.type === 'changed') {
+            return tasks.map((t) => {
+                if(t.id === action.task.id) {
+                    return action.task;
+                } else {
+                    return t;
+                }
+            });
+        } else if (action.type === 'deleted') {
+            return tasks.filter((t) => t.id != action.id);
+        } else {
+            throw Error('Unknown action:'+action.type);
+        }
+    }
+
     return (
         <>
-        
-        </>
+        <h1>Prague itinerary</h1>
+        <AddTask onAddTask={handleAddTask} />
+        <TaskList
+          tasks={tasks}
+          onChangeTask={handleChangeTask}
+          onDeleteTask={handleDeleteTask}
+        />
+      </>
     );
+    
 }
+
+// second step is to write a reducer function
+// function taskReducer(tasks,action) {
+//     if (action.type === 'added') {
+//         return [
+//             ...tasks,
+//             {
+//                 id : action.id,
+//                 text : action.text,
+//                 done : false,
+//             },
+//         ];
+//     } else if (action.type === 'changed') {
+//         return tasks.map((t) => {
+//             if(t.id === action.task.id) {
+//                 return action.task;
+//             } else {
+//                 return t;
+//             }
+//         });
+//     } else if (action.type === 'deleted') {
+//         return tasks.filter((t) => t.id != action.id);
+//     } else {
+//         throw Error('Unknown action:'+action.type);
+//     }
+// }
+
+
+// to migrate from useState to useReducer, first step is to move from setting state to dispatch state
+// // function DispatchActions() {
+    
+// //     function handleAddtask(text) {
+// //         dispatch({              //action object
+// //             type : 'added',
+// //             id : nextId++,
+// //             text : text,
+// //         });
+// //     }
+
+// //     function handleChangeTask(task) {
+// //         dispatch({
+// //             type : 'changed',
+// //             task : task,
+// //         });
+// //     }
+
+// //     function handleDeleteTask(taskId) {
+// //         dispatch({
+// //             type : 'deleted',
+// //             taskId : taskId,
+// //         });
+// //     }
+    
+// //     return (
+// //         <>
+        
+// //         </>
+// //     );
+// }
 
 const initialTasks = [
     {id: 0, text: 'Visit Kafka Museum', done: true},
@@ -220,7 +285,9 @@ export default function UseReducerHook() {
 
             {/* <AddTask/> */}
 
-            <TaskApp/>
+            {/* <TaskApp/> */}
+
+            <ReducerComponent/>
         </>
     );
 }
