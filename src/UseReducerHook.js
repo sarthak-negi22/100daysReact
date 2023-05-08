@@ -1,7 +1,36 @@
 import { useState } from "react";
 
+// second step is to write a reducer function
+function taskReducer(tasks,action) {
+    
+}
+
+
 // to migrate from useState to useReducer, first step is to move from setting state to dispatch state
 function DispatchActions() {
+    
+    function handleAddtask(text) {
+        dispatch({              //action object
+            type : 'added',
+            id : nextId++,
+            text : text,
+        });
+    }
+
+    function handleChangeTask(task) {
+        dispatch({
+            type : 'changed',
+            task : task,
+        });
+    }
+
+    function handleDeleteTask(taskId) {
+        dispatch({
+            type : 'deleted',
+            taskId : taskId,
+        });
+    }
+    
     return (
         <>
         
