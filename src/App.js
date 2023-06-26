@@ -239,10 +239,20 @@
 
 
 
-import UseReducerHook from "./UseReducerHook";
+// import UseReducerHook from "./UseReducerHook";
+
+// export default function App() {
+//     return (
+//         <UseReducerHook/>   
+//     )
+// }
+
+
+
+import WC_DAY_1 from "./WC_DAY_1";
 
 export default function App() {
     return (
-        <UseReducerHook/>   
+        <WC_DAY_1/>
     )
 }
