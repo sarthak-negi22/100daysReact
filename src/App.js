@@ -267,3 +267,13 @@ export default function App() {
         <QuickRecap/>
     );
 }
+
+
+
+// import WC_DAY_2 from "./WC_DAY_2";
+
+// export default function App() {
+//     return (
+//         <WC_DAY_2/>
+//     );
+// }
