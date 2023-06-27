@@ -249,10 +249,21 @@
 
 
 
-import WC_DAY_1 from "./WC_DAY_1";
+// import WC_DAY_1 from "./WC_DAY_1";
+
+// export default function App() {
+//     return (
+//         <WC_DAY_1/>
+//     )
+// }
+
+
+
+
+import QuickRecap from "./QuickRecap";
 
 export default function App() {
     return (
-        <WC_DAY_1/>
-    )
+        <QuickRecap/>
+    );
 }
