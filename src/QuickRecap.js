@@ -1,3 +1,61 @@
+const details = [
+    'Kiyotaka Ayanokoji',
+    'Hikigaya Hachiman',
+    'Eren Yaegar'
+];
+
+const JenshinPlayers = [{
+        id : 0,
+        name : "LucaS",
+        server : "Asia",
+    }, {
+        id : 1,
+        name : "Nix",
+        server : "Europe",
+    } , {
+        id : 2,
+        name : "Slayer",
+        server : "NA",
+    } , {
+        id : 3,
+        name : "Konichivo",
+        server : "Asia",
+    }
+];
+
+function RenderingList() {
+
+    // map method
+    // const listChars = details.map(character => 
+    //     <li>
+    //         { character }
+    //     </li>);
+    //     return (
+    //         <div>
+    //             <ul>{ listChars }</ul>
+    //         </div>
+    //     );
+
+        // filter method
+        const asiaPlayers = JenshinPlayers.filter(player => player.server ==='Asia');
+        
+        const listPlayers = asiaPlayers.map(player => 
+                <li key = { player.id }>
+                    { player.name }
+                </li>
+            )
+
+        return (
+            <div>
+                <ul className = "text-3xl">
+                    { listPlayers }
+                </ul>
+            </div>
+        );
+
+        // give each list item a key
+}   
+
 function CondtionalRender({name, isPacked}) {
     // conditional ternary operator 
 
@@ -178,7 +236,7 @@ export default function QuickRecap() {
                     uid = "20BCS2204"
                 />
             </ParentComponent> */}
-        <ul>
+        {/* <ul>
             <CondtionalRender
                 name = "LucaS"
                 isPacked = {true}
@@ -191,7 +249,9 @@ export default function QuickRecap() {
                 name = "Asta"
                 isPacked = {true}
             />
-            </ul>
+            </ul> */}
+
+            <RenderingList/>
 
         </>
     );
