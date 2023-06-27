@@ -1,3 +1,54 @@
+function CondtionalRender({name, isPacked}) {
+    // conditional ternary operator 
+
+    // return (
+    //     <div>
+    //             <li className = "text-3xl"> 
+    //                 { isPacked ? (
+    //                     <del>
+    //                         { name + 'X' }
+    //                     </del>
+    //                 ) : (
+    //                     name
+    //                 )}
+    //             </li>
+    //     </div>  
+    // );
+
+    // logical && operator
+
+    // return (
+    //     <div>
+    //         <li>
+
+    //             { isPacked && <del>{name + 'X'} </del>}
+
+    //         </li>
+    //     </div>
+    // )
+
+    // conditionally assigning jsx to a variable
+
+    let content = name;
+
+    if(isPacked) {
+        content = (
+            <del>
+                { name + ' X' }
+            </del>
+        );
+    }
+
+    return (
+        <div>
+            <li className = "text-3xl">
+                { content }
+            </li>
+        </div>
+    )
+
+}
+
 function ParentComponent({children}) {
     return (
         <div>
@@ -120,13 +171,27 @@ export default function QuickRecap() {
         /> */}
         {/* <SpreadSyntax/> */}
 
-            <ParentComponent>
+            {/* <ParentComponent>
                 <ChildComponent
                     name = "Sarthak"
                     age = {20}
                     uid = "20BCS2204"
                 />
-            </ParentComponent>
+            </ParentComponent> */}
+        <ul>
+            <CondtionalRender
+                name = "LucaS"
+                isPacked = {true}
+            />
+            <CondtionalRender
+                name = "Nix"
+                isPacked = {false}
+            />
+            <CondtionalRender
+                name = "Asta"
+                isPacked = {true}
+            />
+            </ul>
 
         </>
     );
