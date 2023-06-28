@@ -1,3 +1,141 @@
+import { useState } from "react";
+
+const PlayerDetails = [
+    {
+        name : 'LucaS',
+        uid : '89876789',
+        server : 'Asia'
+
+    } , {
+        name : 'Nix',
+        uid : '87655546',
+        server : 'Europe'
+    } , {
+        name : 'Slayer',
+        uid : '78999098',
+        server : 'North America'
+    } , {
+        name : 'Konichivo',
+        uid : '67889987',
+        server : 'Asia'
+    }
+]
+
+function State() {
+    
+    // const [index, setIndex] = useState(0);
+
+    // // function handleNextClick() {
+    // //     setIndex(index + 1);
+    // // }
+
+    // // function handlePrevClick() {
+    // //     setIndex(index - 1);
+    // // }
+
+    // let player = PlayerDetails[index];
+
+    // function handleNextClick() {
+    //     setIndex(index + 1);
+    // }
+
+    // function handlePrevClick() {
+    //     setIndex(index - 1);
+    // }
+    
+    // return (
+    //     <div>
+    //         <h2>Genshin Impact Player Details</h2>
+    //         <button onClick = {handleNextClick} disabled = {index === (PlayerDetails.length-1)}>
+    //             Next
+    //         </button> {' '}
+    //         <button onClick = {handlePrevClick} disabled = {index === 0}>
+    //             Prev
+    //         </button>
+    //         <h3>{player.name}</h3>
+    //         <h3>{player.uid}</h3>
+    //         <h3>{player.server}</h3>
+    //     </div>
+    // );
+
+    // three steps - trigger, render, commit
+    // react doesnt touch the DOM if the rendering result is same as the last time
+
+    // state as a snapshot
+    
+    // const [isSent, setIsSent] = useState(false);
+    // const [message, setMessage] = useState('insert a message here');
+
+    // if(isSent) {
+    //     return <h2>Message sent! {message}</h2>
+    // }
+
+    // function handleForm(e) {
+    //     e.preventDefault();
+    //     setIsSent(true);
+    //     setMessage(message);
+    // }
+    
+    // return (
+    //     <div>
+    //         <form onSubmit={e => handleForm(e)}>
+    //             <textarea
+    //                 placeholder = ""
+    //                 value = {message}
+    //                 onChange = {e => setMessage(e.target.value) }
+    //             />
+    //                         <button type = 'submit'>
+    //             Submit
+    //         </button>
+    //         </form>
+
+    //     </div>
+    // );
+
+    // setting state only change it for the next render. 
+    const [number, setNumber] = useState(0);
+    
+    function handleClick() {
+        setNumber(number + 1);
+        setNumber(number + 1);
+        setNumber(number + 1);
+    }
+
+    return (
+        <div>
+            <h2>Number is: {number}</h2>
+            <button onClick = {handleClick}>
+                +3
+            </button>
+        </div>
+    )
+
+
+    // state over time : a state's value never changes within a render even if the event handler's code is asynchronous. React keeps the state values fixed within one render's event handlers.
+
+    // const [number, setNumber] = useState(0);
+
+    // function handleClick() {
+    //     setNumber(number + 5);
+    //     setTimeout(() => {
+    //         alert(number);
+    //     }, 2000);
+    // }
+
+    // return (
+    //     <div>
+    //         <h2>{number}</h2>
+    //          <button
+    //             onClick = {handleClick}
+    //          >
+    //             +5
+    //          </button>
+    //     </div>
+    // );
+
+    
+} 
+
 function EventHandler({onClick, children}) {
 
     // function handleClick() {
@@ -353,7 +491,9 @@ export default function QuickRecap() {
                 name = "Himeko"
             /> */}
 
-            <EventHandler/>
+            {/* <EventHandler/> */}
+
+            <State/>
 
         </>
     );
