@@ -1,15 +1,57 @@
-function EventHandler() {
+function EventHandler({onClick, children}) {
 
-    function handleClick() {
-        alert('You clicked the button!');
-    }
+    // function handleClick() {
+    //     alert('You clicked the button!');
+    // }
+
+    // return (
+    //     <div>
+    //         <button
+    //             onClick = {handleClick}
+    //         >Click Me</button>
+    //     </div>
+    // );
+
+    // reading props in event handlers
+
+    // return (
+    //     <div>
+    //         <button
+    //             onClick = {() => alert(message)}
+    //         >
+    //             {children}
+    //         </button>
+    //     </div>
+    // );
+
+    // passing event handlers as props
 
     return (
-        <div>
-            <button
-                onClick = {handleClick}
-            >Click Me</button>
-        </div>
+        <button onClick = {onClick}>
+            {children}
+        </button>
+    );
+
+}
+
+function PlayGenshin({name}) {
+    
+    function handleGame() {
+        alert(`Playing ${name}!`);
+    }
+    
+    return (
+        <EventHandler onClick = {handleGame}>
+            Play { name}
+        </EventHandler>
+    );
+}
+
+function PlayHonkai({name}) {
+    return (
+        <EventHandler onClick = {() => alert(`Playing ${name}`)}>
+            Play { name}
+        </EventHandler>
     );
 }
 
@@ -268,7 +310,27 @@ export default function QuickRecap() {
 
             {/* <RenderingList/> */}
 
-            <EventHandler/>
+            {/* <EventHandler/> */}
+
+            {/* <EventHandler
+                message = "Playing Genshin Impact"
+            >
+                Play Genshin Impact
+            </EventHandler>
+
+            <EventHandler
+                message = "Playing Honkai Star Rail"
+            >
+                Play Honkai Star Rail
+            </EventHandler> */}
+
+            <PlayGenshin
+                name = "Yoimiya"
+            />
+
+            <PlayHonkai
+                name = "Himeko"
+            />
 
         </>
     );
