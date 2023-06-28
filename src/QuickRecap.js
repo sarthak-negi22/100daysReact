@@ -1,3 +1,18 @@
+function EventHandler() {
+
+    function handleClick() {
+        alert('You clicked the button!');
+    }
+
+    return (
+        <div>
+            <button
+                onClick = {handleClick}
+            >Click Me</button>
+        </div>
+    );
+}
+
 const details = [
     'Kiyotaka Ayanokoji',
     'Hikigaya Hachiman',
@@ -251,7 +266,9 @@ export default function QuickRecap() {
             />
             </ul> */}
 
-            <RenderingList/>
+            {/* <RenderingList/> */}
+
+            <EventHandler/>
 
         </>
     );
