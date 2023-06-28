@@ -26,12 +26,33 @@ function EventHandler({onClick, children}) {
 
     // passing event handlers as props
 
-    return (
-        <button onClick = {onClick}>
-            {children}
-        </button>
-    );
+    // return (
+    //     <button onClick = {onClick}>
+    //         {children}
+    //     </button>
+    // );
 
+    // event propagation, e.stopPropagation(), e.preventDefault()
+
+    return (
+        <div onClick = {(e) => {
+                e.stopPropagation();
+                alert('You click the div')}}>
+            <button onClick = {(e) => {
+                e.stopPropagation();
+                alert('Playing Genshin')
+            }}>
+                Genshin
+            </button>
+            <button onClick = {(e) => {
+                 e.stopPropagation();
+                 e.preventDefault();
+                 alert('Playing Honkai')
+            }}>
+                Honkai
+            </button>
+        </div>
+    );
 }
 
 function PlayGenshin({name}) {
@@ -324,13 +345,15 @@ export default function QuickRecap() {
                 Play Honkai Star Rail
             </EventHandler> */}
 
-            <PlayGenshin
+            {/* <PlayGenshin
                 name = "Yoimiya"
             />
 
             <PlayHonkai
                 name = "Himeko"
-            />
+            /> */}
+
+            <EventHandler/>
 
         </>
     );
