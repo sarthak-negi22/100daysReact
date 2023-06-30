@@ -1,4 +1,385 @@
 import { useState } from "react";
+import { useImmer } from 'use-immer';
+
+function UpdatingObjectInState() {
+
+    // when you want to update an object, you need to create a new copy and then set the state to use that copy
+    // we should treat objects as they are immutable, thought they are technically mutable in react
+
+    // const [position, setPosition] = useState({
+    //     x : 0,
+    //     y : 0
+    // });
+
+    // function handlePointer(e) {
+    //     setPosition({
+    //         x : e.clientX,
+    //         y : e.clientY
+    //     });
+    // }
+
+    // return (
+    //     <div
+    //         onPointerMove = {e => {
+    //             handlePointer(e)
+    //         }}
+    //         style = {{
+    //             position : 'relative',
+    //             width : '100vw',
+    //             height : '100vh',
+    //         }}>
+
+    //     <div
+    //     style={{
+    //         position: 'absolute',
+    //         backgroundColor: 'red',
+    //         borderRadius: '50%',
+    //         transform: `translate(${position.x}px, ${position.y}px)`,
+    //         left: -10,
+    //         top: -10,
+    //         width: 20,
+    //         height: 20,
+    //     }}/>
+    //     </div>
+    // );
+
+    // local mutation is fine, that is chaning the object that you have just freshly created since no other part of the code references to it yet.
+
+    // copying objects with the spread syntax
+
+    // const [person, setPerson] = useState({
+    //     firstName : 'Sarthak',
+    //     lastName : 'Negi',
+    //     email : 'sarthak2221@gmail.com'
+    // });
+
+    // function handleFirstName(e) {
+    //     setPerson({
+    //         ...person,
+    //         firstName : e.target.value
+    //     });
+    // }
+
+    // function handleLastName(e) {
+    //     setPerson({
+    //         ...person,
+    //         lastName : e.target.value
+    //     })
+    // }
+
+    // function handleEmail(e) {
+    //     setPerson( {
+    //         ...person,
+    //         email : e.target.value
+    //     })
+    // }
+
+    // // for using a single event handler, use [ ] to specify a property with dynamic name
+    // function handleChange(e) {
+    //     setPerson({
+    //         ...person,
+    //         [e.target.name] : e.target.value
+    //     });
+    // }
+
+    // return (
+    //     <>
+    //         <label>
+    //             First Name:
+    //         </label>
+    //         <input
+    //             onChange = { handleFirstName }
+    //             value = { person.firstName }
+    //         />
+    //         <label>
+    //             Last Name:
+    //         </label>
+    //         <input
+    //             onChange = { handleLastName }
+    //             value = { person.lastName }
+    //         />
+    //         <label>
+    //             Email:
+    //         </label>
+    //         <input
+    //             onChange = { handleEmail }
+    //             value = { person.email }
+    //         />
+    //         <h2>{ person.firstName } {' '} { person.lastName } { ' ' } { person.email }</h2>
+    //     </>
+    // )
+
+    // updating a nested object
+
+    // const [player, setPlayer] = useState({
+    //     name : 'LucaS',
+    //     server : 'Asia',
+    //     uid : 89776789,
+    //     level : 60,
+    //     details : {
+    //         chars : 10,
+    //         weapons : 3,
+    //     }
+    // });
+    
+    // function handleName(e) {
+    //     setPlayer({
+    //         ...player,
+    //         name : e.target.value
+    //     });
+    // }
+
+    // function handleServer(e) {
+    //     setPlayer({
+    //         ...player,
+    //         server : e.target.value
+    //     });
+    // }
+
+    // function handleUid(e) {
+    //     setPlayer({
+    //         ...player,
+    //         uid : e.target.value
+    //     });
+    // }
+
+    // function handleLevel(e) {
+    //     setPlayer({
+    //         ...player,
+    //         level : e.target.value
+    //     });
+    // }
+
+    // function handleChars(e) {
+    //     setPlayer({
+    //         ...player,
+    //         details : {
+    //             ...player.details,
+    //             chars : e.target.value
+    //         }
+    //     });
+    // }
+
+    // function handleWeapons(e) {
+    //     setPlayer({
+    //         ...player,
+    //         details : {
+    //             ...player.details,
+    //             weapons : e.target.value
+    //         }
+    //     });
+    // }
+
+    // return (
+    //     <div>
+    //         <label>
+    //             Name : 
+    //         </label>
+    //         <input
+    //             value = { player.name }
+    //             onChange = { handleName }
+    //         />
+    //         <label>
+    //             Server : 
+    //         </label>
+    //         <input
+    //             value = { player.server }
+    //             onChange = { handleServer }
+    //         />
+    //         <label>
+    //             UID : 
+    //         </label>
+    //         <input
+    //             value = { player.uid }
+    //             onChange = { handleUid }
+    //         />
+    //         <label>
+    //             Level : 
+    //         </label>
+    //         <input
+    //             value = { player.level }
+    //             onChange = { handleLevel }
+    //         />
+    //         <label>
+    //             Characters : 
+    //         </label>
+    //         <input
+    //             value = { player.details.chars }
+    //             onChange = { handleChars }
+    //         />
+    //         <label>
+    //             Weapons : 
+    //         </label>
+    //         <input
+    //             value = { player.details.weapons }
+    //             onChange = { handleWeapons }
+    //         />
+    //         <h2>{ player.name } / { player.server } / { player.level } / { player.uid } has { player.details.chars } characters and { player.details.weapons } weapons in Genshin Impact</h2>
+    //     </div>
+    // );
+
+    // updating the logic using useImmer - immer provides a special type of object known as Proxy that records what you do with it, it figures out which part of the draft have been changed and produces a completely free object contains your edits.
+
+        const [player, updatePerson] = useImmer({
+        name : 'LucaS',
+        server : 'Asia',
+        uid : 89776789,
+        level : 60,
+        details : {
+            chars : 10,
+            weapons : 3,
+        }
+    });
+
+    function handleName(e) {
+        updatePerson(draft => {
+            draft.name = e.target.value
+        });
+    }
+
+    function handleServer(e) {
+        updatePerson(draft => {
+            draft.server = e.target.value
+        });
+    }
+
+    function handleUid(e) {
+        updatePerson(draft => {
+            draft.uid = e.target.value
+        });
+    }
+
+    function handleLevel(e) {
+        updatePerson(draft => {
+            draft.level = e.target.value
+        });
+    }
+
+    function handleChars(e) {
+        updatePerson(draft => {
+            draft.details.chars = e.target.value
+        });
+    }
+
+    function handleWeapons(e) {
+        updatePerson(draft => {
+            draft.details.weapons = e.target.value
+        });
+    }
+
+        return (
+        <div>
+            <label>
+                Name : 
+            </label>
+            <input
+                value = { player.name }
+                onChange = { handleName }
+            />
+            <label>
+                Server : 
+            </label>
+            <input
+                value = { player.server }
+                onChange = { handleServer }
+            />
+            <label>
+                UID : 
+            </label>
+            <input
+                value = { player.uid }
+                onChange = { handleUid }
+            />
+            <label>
+                Level : 
+            </label>
+            <input
+                value = { player.level }
+                onChange = { handleLevel }
+            />
+            <label>
+                Characters : 
+            </label>
+            <input
+                value = { player.details.chars }
+                onChange = { handleChars }
+            />
+            <label>
+                Weapons : 
+            </label>
+            <input
+                value = { player.details.weapons }
+                onChange = { handleWeapons }
+            />
+            <h2>{ player.name } / { player.server } / { player.level } / { player.uid } has { player.details.chars } characters and { player.details.weapons } weapons in Genshin Impact</h2>
+        </div>
+    );
+
+
+}
+
+function StateUpdates() {
+
+    // react waits until all code in the event handlers has run before processing your state updates.
+    // batching means that the UI wont be updated after your event handler and the code inside it has completed its execution
+    // react does not batch across multiple intentional events like clicks
+
+    // updating the same state multiple times befores the next re-render
+
+    // const [number, setNumber] = useState(0);
+
+    // function handleClick() {
+    //     setNumber(n => n + 1); //updater function
+    //     setNumber(n => n + 1);
+    //     setNumber(n => n + 1);
+    // }
+
+    // return (
+    //     <div>
+    //         <h2>Number is: { number }</h2>
+    //         <button onClick = { handleClick }>
+    //             +3
+    //         </button>
+    //     </div>
+    // );
+
+    // updating state after replacing it
+
+    // const [number, setNumber] = useState(0);
+
+    // function handleClick() {
+    //     setNumber(number + 5);
+    //     setNumber(n => n + 1);
+    // }
+
+    // return (
+    //     <div>
+    //         <h2>Number is { number }</h2>
+    //         <button onClick = { handleClick }>
+    //             Increment!
+    //         </button>
+    //     </div>
+    // );
+
+    // replacing state after updating it
+
+    // const [number, setNumber] = useState(0);
+
+    // function handleClick() {
+    //     setNumber(number + 5);
+    //     setNumber(n => n + 1);
+    //     setNumber(42);
+    // }
+
+    // return (
+    //     <div>
+    //         <h2>Number is: { number }</h2>
+    //         <button onClick = { handleClick }>
+    //             Increment!
+    //         </button>
+    //     </div>
+    // );
+}
 
 const PlayerDetails = [
     {
@@ -493,7 +874,11 @@ export default function QuickRecap() {
 
             {/* <EventHandler/> */}
 
-            <State/>
+            {/* <State/> */}
+
+            {/* <StateUpdates/> */}
+
+            <UpdatingObjectInState/>
 
         </>
     );
