@@ -1,6 +1,217 @@
 import { useState } from "react";
 import { useImmer } from 'use-immer';
 
+let nextId = 0;
+
+let initialArs =  [
+    0, 0, 0
+];
+
+
+function UpdatingArrayInState() {
+
+    // adding to an array
+
+    // const [name, setName] = useState('');
+    // const [players, setPlayers] = useState([]);
+
+    // function handleInput(e) {
+    //     setName(e.target.value);
+    // }
+
+    // function handleClick() {
+    //     setPlayers([
+    //         ...players,
+    //         {
+    //             id : nextId ++,
+    //             name : name
+    //         }
+    //     ]);
+
+    //     // for putting the item at the beginning
+
+    //     // setPlayers([
+    //     //     {
+    //     //         id : nextId ++,
+    //     //         name : name
+    //     //     } , 
+    //     //     ...players
+    //     // ]);
+    // }
+
+    // return (
+    //     <div>
+    //         <h2>Genshin Impact Players</h2>
+    //         <input
+    //             value = { name }
+    //             onChange = {e => handleInput(e) }
+    //         />
+    //         <button
+    //             onClick = { handleClick }
+    //         >
+    //             Add
+    //         </button>
+    //         <ul>
+    //             { players.map(player => (
+    //                 <li key = { player.id }>{ player.name }</li>
+    //             ))}
+    //         </ul>
+    //     </div>
+    // );
+
+    // removing an item from an array
+
+    // const [players, setPlayers] = useState([]);
+    // const [name, setName] = useState('');
+
+    // function handleChange(e) {
+    //     setName(e.target.value)
+    // }
+
+    // function handleClick() {
+    //     setPlayers([
+    //         ...players,
+    //         {
+    //             id : nextId ++,
+    //             name : name
+    //         }
+    //     ]);
+    // }
+
+    // return (
+    //     <div>
+    //         <h2>Honkai Impact Players</h2>
+    //         <input
+    //             value = { name }
+    //             onChange = {e => handleChange(e) }
+    //         />
+    //         <button 
+    //             onClick = { handleClick }
+    //         >
+    //             Add
+    //         </button>
+    //         <ul>
+    //             { players.map(player => (
+    //                 <>
+    //                 <li key = { player.id }>{ player.name }</li>
+    //                 <button 
+    //                     onClick = { () => {
+    //                         setPlayers(
+    //                             players.filter((p => p.id !== player.id))
+    //                         )
+    //                     } }
+    //                 >
+    //                     Delete
+    //                 </button>
+    //                 </>
+    //             ))}
+    //         </ul>
+    //     </div>
+    // );
+
+    // transforming an array
+
+    // let initialStates = [
+    //     { id: 0, type: 'circle', x: 50, y: 100 },
+    //     { id: 1, type: 'square', x: 150, y: 100 },
+    //     { id: 2, type: 'circle', x: 250, y: 100 },
+    // ]
+
+    // const [shapes, setShapes] = useState(initialStates);
+
+    // function handleCircle() {
+    //     const newShapes = shapes.map(shape => {
+    //         if(shape.type === 'square') {
+    //             return shape;
+    //         } else {
+    //             return {
+    //                 ...shape,
+    //                 y : shape.y + 50
+    //             }
+    //         }
+    //     });
+    //     setShapes(newShapes);
+    // }
+
+    // function handleSquare() {
+    //     const newShapes = shapes.map(shape => {
+    //         if(shape.type === 'circle') {
+    //             return shape;
+    //         } else {
+    //             return {
+    //                 ...shape,
+    //                 y : shape.y + 50
+    //             }
+    //         }
+    //     });
+    //     setShapes(newShapes);
+    // }
+
+    // return (
+    //     <div>
+    //         <button 
+    //             onClick = { handleCircle }
+    //         >
+    //             Move the circle!
+    //         </button>
+    //         { ' '}
+    //         <button
+    //             onClick = { handleSquare }
+    //         >
+    //             Move the square!
+    //         </button>
+    //         {shapes.map(shape => (
+    //     <div
+    //       key={shape.id}
+    //       style={{
+    //       background: 'purple',
+    //       position: 'absolute',
+    //       left: shape.x,
+    //       top: shape.y,
+    //       borderRadius:
+    //         shape.type === 'circle'
+    //           ? '50%' : '',
+    //       width: 20,
+    //       height: 20,
+    //     }} />
+    //   ))}
+    //     </div>
+    // );
+
+    // replacing items in an array
+
+
+    const [levels, setLevels] = useState(initialArs);
+
+    function handleClick(index) {
+        const nextLevels = levels.map((l,i) => {
+            if(i === index) {
+                return l + 1
+            } else {
+                return l;
+            }
+        });
+        setLevels(nextLevels);
+    }
+    
+    return (
+        <div>
+            <ul>
+                { levels.map((level, i) => (
+                    <li key = { i }>
+                        { level }
+                        <button 
+                            onClick = {() => handleClick(i) }
+                        >
+                            +1
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );  
+}
+
 function UpdatingObjectInState() {
 
     // when you want to update an object, you need to create a new copy and then set the state to use that copy
@@ -879,7 +1090,9 @@ export default function QuickRecap() {
             {/* <StateUpdates/> */}
 
 {/* ignore */}
-            <UpdatingObjectInState/>
+            {/* <UpdatingObjectInState/> */}
+
+            <UpdatingArrayInState/>
 
         </>
     );
