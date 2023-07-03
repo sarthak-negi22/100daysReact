@@ -7,6 +7,25 @@ let initialArs =  [
     0, 0, 0
 ];
 
+function Testing() {
+
+    const [number, setNumber] = useState(0);
+
+    function handleClick() {
+        setNumber(number + 1);
+    }
+
+    return (
+        <div>
+            <button onClick = {() => handleClick }>
+                +1
+            </button>
+            {' '}
+            <h2>{ number }</h2>
+        </div>
+    );
+}
+
 
 function UpdatingArrayInState() {
 
@@ -181,35 +200,71 @@ function UpdatingArrayInState() {
     // replacing items in an array
 
 
-    const [levels, setLevels] = useState(initialArs);
+    // const [levels, setLevels] = useState(initialArs);
 
-    function handleClick(index) {
-        const nextLevels = levels.map((l,i) => {
-            if(i === index) {
-                return l + 1
-            } else {
-                return l;
-            }
-        });
-        setLevels(nextLevels);
-    }
+    // function handleClick(index) {
+    //     const nextLevels = levels.map((l,i) => {
+    //         if(i === index) {
+    //             return l + 1
+    //         } else {
+    //             return l;
+    //         }
+    //     });
+    //     setLevels(nextLevels);
+    // }
     
+    // return (
+    //     <div>
+    //         <ul>
+    //             { levels.map((level, i) => (
+    //                 <li key = { i }>
+    //                     { level }
+    //                     <button 
+    //                         onClick = {() => handleClick(i) }
+    //                     >
+    //                         +1
+    //                     </button>
+    //                 </li>
+    //             ))}
+    //         </ul>
+    //     </div>
+    // );  
+
+    // insertion at a specific index of an array
+
+    const [name, setName] = useState('');
+    const [players, setPlayers] = useState([]);
+
+    function handleClick() {
+        const insertAt = 2;
+        const nextPlayers = [
+            ...players.slice(0,insertAt),
+            { id : nextId, name : name },
+            ...players.slice(insertAt)
+        ];
+        setPlayers(nextPlayers);
+        setName('');
+    }
+
     return (
         <div>
+            <h2>Genshin Impact Players</h2>
+            <input
+                value = { name }
+                onChange = { e => setName(e.target.value) }
+            />
+            <button onClick = { handleClick }>
+                Add
+            </button>
             <ul>
-                { levels.map((level, i) => (
-                    <li key = { i }>
-                        { level }
-                        <button 
-                            onClick = {() => handleClick(i) }
-                        >
-                            +1
-                        </button>
-                    </li>
-                ))}
+                <li> 
+                    { players.map(player => (
+                        <li key = { player.id }>{ player.name }</li>
+                    )) }
+                </li>
             </ul>
         </div>
-    );  
+    );
 }
 
 function UpdatingObjectInState() {
@@ -1093,6 +1148,8 @@ export default function QuickRecap() {
             {/* <UpdatingObjectInState/> */}
 
             <UpdatingArrayInState/>
+
+            {/* <Testing/> */}
 
         </>
     );
