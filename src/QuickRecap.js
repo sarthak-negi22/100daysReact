@@ -232,36 +232,164 @@ function UpdatingArrayInState() {
 
     // insertion at a specific index of an array
 
-    const [name, setName] = useState('');
-    const [players, setPlayers] = useState([]);
+    // const [name, setName] = useState('');
+    // const [players, setPlayers] = useState([]);
 
-    function handleClick() {
-        const insertAt = 2;
-        const nextPlayers = [
-            ...players.slice(0,insertAt),
-            { id : nextId, name : name },
-            ...players.slice(insertAt)
-        ];
-        setPlayers(nextPlayers);
-        setName('');
+    // function handleClick() {
+    //     const insertAt = 2;
+    //     const nextPlayers = [
+    //         ...players.slice(0,insertAt),
+    //         { id : nextId, name : name },
+    //         ...players.slice(insertAt)
+    //     ];
+    //     setPlayers(nextPlayers);
+    //     setName('');
+    // }
+
+    // return (
+    //     <div>
+    //         <h2>Genshin Impact Players</h2>
+    //         <input
+    //             value = { name }
+    //             onChange = { e => setName(e.target.value) }
+    //         />
+    //         <button onClick = { handleClick }>
+    //             Add
+    //         </button>
+    //         <ul>
+    //             <li> 
+    //                 { players.map(player => (
+    //                     <li key = { player.id }>{ player.name }</li>
+    //                 )) }
+    //             </li>
+    //         </ul>
+    //     </div>
+    // );
+
+    // making other changes to an array (sorting)
+
+    // const players = [
+    //     { id : 0, name : 'LucaS' },
+    //     { id : 1, name : 'Astra' },
+    //     { id : 2, name : 'Luke' },
+    //     { id : 3, name : 'Nix' },
+    // ];
+
+    // const [list, setlist] = useState(players);
+
+    // function handleClick() {
+    //     const newList = [...list];
+    //     newList.reverse();
+    //     setlist(newList);
+    // }
+
+    // return (
+    //     <div>
+    //         <button onClick = { handleClick }>
+    //             Reverse!
+    //         </button>
+    //         <ul>
+    //             { list.map(player => (
+    //                 <li key = { player.id }>{ player.name }</li>
+    //             ))}
+    //         </ul>
+    //     </div>
+    // );
+
+    // updating objects inside arrays - when updating the nested state you need to create copies from the point where you want to update and all the way up to the top level
+
+    const initialChars = [
+        { id : 0, name : 'Yoimiya', seen : false },
+        { id : 1, name : 'Eula', seen : false },
+        { id : 2, name : 'Ganyu', seen : false },
+        { id : 3, name : 'Nilou', seen : false },
+    ];
+
+    // const [myChars, setMyChars] = useState(initialChars);
+    // const [yourChars, setYourChars] = useState(initialChars);
+
+    // useImmer
+    const [myChars, updateMyChars] = useImmer(initialChars);
+    const [yourChars, updateYourChars] = useImmer(initialChars);
+
+    function handleMyChars(id, nextSeen) {
+        // setMyChars(myChars.map(character => {
+        //     if(character.id === id) {
+        //         return {
+        //              ...character, seen : nextSeen 
+        //         }
+        //     } else {
+        //         return character;
+        //     }
+        // }));
+
+        // useImmer
+        updateMyChars(draft => {
+            const character = draft.find(c => 
+                c.id === id
+            );
+            character.seen = nextSeen;
+        })
+    }
+
+    function handleYourChars(id, nextSeen) {
+        // setYourChars(yourChars.map(character => {
+        //     if(character.id === id) {
+        //         return {
+        //              ...character, seen : nextSeen 
+        //         }
+        //     } else {
+        //         return character;
+        //     }
+        // }));
+
+        // useImmer
+        updateYourChars(draft => {
+            const character = draft.find(c => 
+                c.id === id
+            );
+            character.seen = nextSeen;
+        })
     }
 
     return (
         <div>
-            <h2>Genshin Impact Players</h2>
-            <input
-                value = { name }
-                onChange = { e => setName(e.target.value) }
+            <h2>Genshin Impact</h2>
+            <h3>My List of the Characters</h3>
+            <ItemList
+                chars = { myChars }
+                onToggle = { handleMyChars }
             />
-            <button onClick = { handleClick }>
-                Add
-            </button>
+            <h3>Your List of the Characters</h3>
+            <ItemList
+                chars = { yourChars }
+                onToggle = { handleYourChars }
+            />
+        </div>
+    );
+}
+
+function ItemList({ chars, onToggle }) {
+    return (
+        <div>
             <ul>
-                <li> 
-                    { players.map(player => (
-                        <li key = { player.id }>{ player.name }</li>
-                    )) }
-                </li>
+                { chars.map(character => (
+                    <li key = { character.id }>
+                        <label>
+                            <input
+                                type = "checkbox"
+                                checked = { character.seen }
+                                onChange = { e => {
+                                    onToggle(
+                                        character.id,
+                                        e.target.checked
+                                    );
+                                }}
+                            />
+                            { character.name }
+                        </label>
+                    </li>
+                )) }
             </ul>
         </div>
     );
