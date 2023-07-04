@@ -260,13 +260,13 @@
 
 
 
-import QuickRecap from "./QuickRecap";
+// import QuickRecap from "./QuickRecap";
 
-export default function App() {
-    return (
-        <QuickRecap/>
-    );
-}
+// export default function App() {
+//     return (
+//         <QuickRecap/>
+//     );
+// }
 
 
 
@@ -277,3 +277,11 @@ export default function App() {
 //         <WC_DAY_2/>
 //     );
 // }
+
+import ReactToInputWithState from "./ReactingToInputWithState";
+
+export default function App() {
+    return (
+        <ReactToInputWithState/>
+    )
+}

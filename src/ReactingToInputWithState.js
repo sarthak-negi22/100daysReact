@@ -1,7 +1,14 @@
 // think about the UI declaratively, not imperatively
+// 5 steps : 
+// a) identify your component's visual states
+// b) determine what triggers those state changes
+// c) represent the state in memory using useState
+// d) remove any non-essential state variables
+// e) connect the event handlers to set the state
 
 import { useState } from "react";
 
+// your goal is to prevent the cases where the state in memory doenst represent any valid UI that you had meant to a user to see while removing non-essential state variables
 function DeclarativeForm() {
     
     const [answer, setAnswer] = useState('');
@@ -92,8 +99,11 @@ function DisplayManyVisualStates() {
 
 function Form({ status = 'typing' }) {
     if(status === 'success') {
-        return(
+        return( 
+            <>
             <h2>That's correct!</h2>
+            <hr/>
+            </>
         );
     }
 
