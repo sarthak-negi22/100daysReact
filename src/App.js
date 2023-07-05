@@ -278,10 +278,28 @@
 //     );
 // }
 
-import ReactToInputWithState from "./ReactingToInputWithState";
+// import ReactToInputWithState from "./ReactingToInputWithState";
+
+// export default function App() {
+//     return (
+//         <ReactToInputWithState/>
+//     )
+// }
+
+
+// import ChoosingTheStateStructure from "./ChoosingTheStateStructure";
+
+// export default function App() {
+//     return (
+//         <ChoosingTheStateStructure/>
+//     )
+// }
+
+
+import StructuringState from "./StructuringState";
 
 export default function App() {
     return (
-        <ReactToInputWithState/>
+        <StructuringState/>
     )
 }

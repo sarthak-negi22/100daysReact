@@ -33,12 +33,14 @@ function DeclarativeForm() {
         });
     }
 
+
+    // async means that a function always return a promise. Other values are wrapped in a resolved promise automatically
     async function handleSubmit(e) {
         e.preventDefault();
         setStatus('submitting');
 
         try {
-            await submitForm(answer);
+            await submitForm(answer);   //await makes JS wait until the promise settles  and return its result
             setStatus('success');
         } catch (err) {
             setStatus('typing');

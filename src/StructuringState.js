@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { initialTravelPlan } from "./places";
 
+// five principles for structuring the state:
+// 1) group related state
+// 2) avoid contradiction in state
+// 3) avoid redundant state
+// 4) avoid duplicate states
+// 5) avoid deeply nested state
+// "Make your state as simple as it can be-but not simpler"
+
 function AvoidDeeplyNestedState() {
     
     const [plan, setPlan] = useState(initialTravelPlan);
@@ -220,7 +228,7 @@ function AvoidContradictionInState() {
     );
 }
 
-
+// if some state variables always change together, it might be a good idea to unify them into a single state variable
 function GroupRelatedState() {
 
     const [position, setPosition] = useState({x : 0, y : 0});
@@ -265,13 +273,13 @@ export default function StructuringState() {
 
             {/* <GroupRelatedState/> */}
 
-            {/* <AvoidContradictionInState/> */}
+            <AvoidContradictionInState/>
 
             {/* <AvoidRedundantState/> */}
 
             {/* <AvoidDuplicationInState/> */}
 
-            <AvoidDeeplyNestedState/>
+            {/* <AvoidDeeplyNestedState/> */}
         </>
     );
 }
