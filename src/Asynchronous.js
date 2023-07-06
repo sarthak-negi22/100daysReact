@@ -1,3 +1,49 @@
+function AsyncAwaitInJs() {
+    // the word async before a function specifies one thing: it always return a promise, other values are wrapped in resolved promise automatically.
+
+    // async function f() {
+    //     return Promise.resolve(1);
+    // }
+
+    // f().then(alert);
+
+    // await makes the js wait until that promise settles and returns the result. It only works inside async block
+
+
+    async function f() {
+        let promise = new Promise((resolve, reject) => {
+            setTimeout(() => resolve('done'), 3000)
+        });
+
+        let result = await promise;
+
+        alert(result);
+    }
+
+    // f();
+
+    // await suspends the function execution until the promise settles and then resumes it with the promise result.
+
+    // error handling 
+
+    async function f2() {
+        await Promise.reject(new Error ('Whhops!'));
+    
+    }
+
+    // the promise can take some time before it rejects. In that cases there will be a delay before await throws an error
+
+    async function f3() {
+        try {
+            let response = await fetch('http://no-such-url');
+        } catch(err) {
+            alert(err);
+        }
+    }
+
+    f3();
+}
+
 function PromiseInJs() {
     let promise = new Promise(function(resolve, reject) {
         // executor the producing code, singer
@@ -49,7 +95,9 @@ function PromiseInJs() {
 export default function Asynchronous() {
     return (
         <div>
-            <PromiseInJs/>
+            {/* <PromiseInJs/> */}
+
+            <AsyncAwaitInJs/>
         </div>
     );
 }
