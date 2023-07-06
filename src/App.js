@@ -296,10 +296,19 @@
 // }
 
 
-import StructuringState from "./StructuringState";
+// import StructuringState from "./StructuringState";
+
+// export default function App() {
+//     return (
+//         <StructuringState/>
+//     )
+// }
+
+
+import Asynchronous from "./Asynchronous";
 
 export default function App() {
-    return (
-        <StructuringState/>
-    )
+    return(
+        <Asynchronous/>
+    );
 }

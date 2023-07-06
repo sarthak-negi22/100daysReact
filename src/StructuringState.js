@@ -175,6 +175,8 @@ function AvoidRedundantState() {
     );
 }
 
+
+// you should avoid when state is structured in a way that that several pieces of state may contradict and disagree with each other, leaving room for mistakes.
 function AvoidContradictionInState() {
     
     const [status, setStatus] = useState('typing');
