@@ -9,6 +9,8 @@ import { initialTravelPlan } from "./places";
 // 5) avoid deeply nested state
 // "Make your state as simple as it can be-but not simpler"
 
+
+// if the state is too nested to update easily, consider making it "flat"
 function AvoidDeeplyNestedState() {
     
     const [plan, setPlan] = useState(initialTravelPlan);
@@ -87,6 +89,8 @@ const initialCharacters = [
     { name : 'yae miko', element : 'electro', id : 2 },
 ]
 
+
+// the information should not be duplicated in two places. For eg, in the characters we have an array of objects, whereas in selectedId we have just the id of the character, that is only necessary to get the selected character.
 function AvoidDuplicationInState() {
 
     const [characters, setCharacters] = useState(initialCharacters);
@@ -137,6 +141,7 @@ function AvoidDuplicationInState() {
     );
 }
 
+// if you can canculate some information from the component's props or existing state variables during rendering, you should not put that info into the component's state
 function AvoidRedundantState() {
     
     const [firstName, setFirstName] = useState('');
@@ -275,11 +280,11 @@ export default function StructuringState() {
 
             {/* <GroupRelatedState/> */}
 
-            <AvoidContradictionInState/>
+            {/* <AvoidContradictionInState/> */}
 
             {/* <AvoidRedundantState/> */}
 
-            {/* <AvoidDuplicationInState/> */}
+            <AvoidDuplicationInState/>
 
             {/* <AvoidDeeplyNestedState/> */}
         </>

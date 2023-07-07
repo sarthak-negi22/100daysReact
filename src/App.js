@@ -287,13 +287,13 @@
 // }
 
 
-// import ChoosingTheStateStructure from "./ChoosingTheStateStructure";
+import StructuringState from "./StructuringState";
 
-// export default function App() {
-//     return (
-//         <ChoosingTheStateStructure/>
-//     )
-// }
+export default function App() {
+    return (
+        <StructuringState/>
+    )
+}
 
 
 // import StructuringState from "./StructuringState";
@@ -305,10 +305,10 @@
 // }
 
 
-import Asynchronous from "./Asynchronous";
+// import Asynchronous from "./Asynchronous";
 
-export default function App() {
-    return(
-        <Asynchronous/>
-    );
-}
+// export default function App() {
+//     return(
+//         <Asynchronous/>
+//     );
+// }
