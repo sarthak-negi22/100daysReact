@@ -1,3 +1,5 @@
+// components often need to display content on the based of conditions
+
 function StudentDeails({ name, age, marks }) {
     return (
         <div>

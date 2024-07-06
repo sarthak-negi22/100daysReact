@@ -1,3 +1,5 @@
+// react application begins with the "root component", here "App.js" file is the root component
+
 // import HelloWorld from "./HelloWorld";
 
 // export default function App() {
@@ -9,13 +11,13 @@
 
 
 
-// import GenshinImpact from "./ImportAndExport";
+// import GenshinSucks from "./ImportAndExport";       //notice how we can change the name of the default export while importing it
 // import { HonkaiImpact } from "./ImportAndExport";
 
 // export default function App (){
 //   return (
 //     <div>
-//     <GenshinImpact/>
+//     <GenshinSucks/>
 //     <HonkaiImpact/>
 //     </div>
 //   );
@@ -62,15 +64,15 @@
 
 
 
-// import ConditionalRender from "./ConditionalRender";
+import ConditionalRender from "./ConditionalRender";
 
-// export default function App() {
-//     return (
-//         <div>
-//             <ConditionalRender/>
-//         </div>
-//     );
-// }
+export default function App() {
+    return (
+        <div>
+            <ConditionalRender/>
+        </div>
+    );
+}
 
 
 
@@ -287,13 +289,13 @@
 // }
 
 
-import StructuringState from "./StructuringState";
+// import StructuringState from "./StructuringState";
 
-export default function App() {
-    return (
-        <StructuringState/>
-    )
-}
+// export default function App() {
+//     return (
+//         <StructuringState/>
+//     )
+// }
 
 
 // import StructuringState from "./StructuringState";
