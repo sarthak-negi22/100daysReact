@@ -64,15 +64,15 @@
 
 
 
-import ConditionalRender from "./ConditionalRender";
+// import ConditionalRender from "./ConditionalRender";
 
-export default function App() {
-    return (
-        <div>
-            <ConditionalRender/>
-        </div>
-    );
-}
+// export default function App() {
+//     return (
+//         <div>
+//             <ConditionalRender/>
+//         </div>
+//     );
+// }
 
 
 

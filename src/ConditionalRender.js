@@ -1,4 +1,5 @@
 // components often need to display content on the based of conditions
+// syntax like if else, &&, ?: operator are used to do so
 
 function StudentDeails({ name, age, marks }) {
     return (
@@ -10,10 +11,8 @@ function StudentDeails({ name, age, marks }) {
         </div>
         
     );
-
-    
 }
-
+// here we are using if else syntax to check the marks and age prop, and depending on the condition as true or false, the code returns a different JSX
 function RenderIfElse({ name, age, marks }) {
     if(age > 20 && marks > 80) {
         return <StudentDeails
@@ -24,6 +23,7 @@ function RenderIfElse({ name, age, marks }) {
     }
 }
 
+// however, using if-else, it sometimes lead to repetation of code. To avoid that, ternary operator is more used for a compact syntax
 function RenderTernary({ name, age, marks }) {
     
     return (
@@ -37,32 +37,47 @@ function RenderTernary({ name, age, marks }) {
     ) : (
         <h2>Age is less for { name }</h2>
     )
-    )
+    )       //the above two examples are completely equivalent, since you might assume that one of them might create two "instances" of a JSX element
+    // But JSX elements arent instances, they dont hold any internal state and arent real DOM nodes. They are lightweight descriptions, like blueprint
 }
-
+// when we want to render a JSX when the condition is true, otherwise render nothing if its false.
 function RenderANDOperator({ marks, age, name }) {
     return (
         
-            marks>85 && <StudentDeails
-                name = { name }
+            marks>85 && <StudentDeails              //comare this
+                name = { name }         //rending this if its true, otherwise nothing
                 age = { age }
                 marks = {  marks }
             />
         
-    );
+    );          //JS converts the expression into boolean, to test the condition. But if the expression is 0 (like counter && <Li>.....</li>) then react will just render 0, since && returns the first falsy value (if the value is falsy like 0 it returns itself)
 }
 
+// this is a much cleaner way to use JSX with a variable for conditionally render
 function JSXVariable({ marks, age, name }){          //more verbose, fllexible
     let compMarks = marks;
     let compAge = age;
 
     if( age > 20){
-        compMarks +=10;
+        compMarks +=10;             //the value of props wont be changed, only the local variables will be changed
     }
     else {
         compMarks -=10;
     }
     
+    // also works for arbitrary JSX like:
+    let messageContent = age;
+
+    if(messageContent > 20){
+
+     messageContent = (             //arbitrary JSX, not only for text
+        <del>
+            This is a message content       
+        </del>
+    )
+}
+
+
 
     return (
         <div>
@@ -71,89 +86,55 @@ function JSXVariable({ marks, age, name }){          //more verbose, fllexible
                 age = { compAge }
                 marks = { compMarks }
             />
+            { messageContent }              
         </div>
     );
 }
 export default function ConditionalRender(){
     return (
         <div>
-            {/* <RenderIfElse
+            <RenderIfElse
                 marks = { 81 }
                 age = { 19 }
                 name = "Sarthak"
             />
-            <RenderIfElse
-                marks = { 85 }
-                age = { 21 }
-                name = "Rohit"
-            />
-            <RenderIfElse
+            
+            {/* <RenderIfElse
                 marks = { 78 }
                 age = { 22 }
                 name = "tabish"
             />
-            <RenderIfElse
-                marks = { 99 }
-                age = { 21 }
-                name = "Kanishk"
-            /> */}
-            {/* <RenderTernary
+            
+            <RenderTernary
                 name = "Sarthak"
                 age = { 21 }
                 marks = {80}
             />
-             <RenderTernary
-                name = "Kanishk"
-                age = { 19 }
-                marks = {80}
-            />
-             <RenderTernary
-                name = "Rohit"
-                age = { 18 }
-                marks = {80}
-            /> */}
-
-            {/* <RenderANDOperator
+            
+            <RenderANDOperator
                 name = "Sarthak"
                 marks = { 87 }
                 age = { 21 }
             />
-            <RenderANDOperator
-                name = "Kanishk"
-                marks = { 99 }
-                age = { 21 }
-            />
+            
             <RenderANDOperator
                 name = "Tabish"
                 marks = { 67 }
                 age = { 21 }
             />
-            <RenderANDOperator
-                name = "Rohit"
-                marks = { 85 }
-                age = { 21 }
-            /> */}
+            
 
             <JSXVariable
                 name = "Sarthak"
                 age = { 21 }
                 marks = { 78 }
             />
-            <JSXVariable
-                name = "Kanishk"
-                age = { 19 }
-                marks = { 67 }
-            />
-            <JSXVariable
-                name = "Rohit"
-                age = { 23 }
-                marks = { 99 }
-            />
+           
             <JSXVariable
                 name = "Tabish"
                 age = { 20 }
                 marks = { 89 }
-            />
+            /> */}
         </div>
     );
 }
