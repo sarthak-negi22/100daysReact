@@ -97,6 +97,14 @@
 //     );
 // }
 
+import YourUIAsTree from "./YourUIAsTree";
+
+export default function App() {
+    return (
+        <YourUIAsTree />
+    )
+}
+
 
 
 // import EventHandler from "./EventHandler";
